@@ -1,0 +1,16 @@
+# modelos/producto.py
+
+class Producto:
+    def __init__(self, nombre: str, precio: float):
+        """
+        Constructor de la clase Producto.
+        Inicia el nombre y el precio del producto del restaurante.
+        """
+        self.nombre = nombre
+        self.precio = precio
+
+    def __str__(self):
+        """
+        Representación en texto del producto.
+        """
+        return f"{self.nombre} - ${self.precio:.2f}"
