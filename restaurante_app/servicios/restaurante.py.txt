@@ -1,0 +1,37 @@
+# servicios/restaurante.py
+
+class Restaurante:
+    def __init__(self, nombre: str):
+        """
+        Constructor de la clase Restaurante.
+        Maneja el nombre del lugar, el menú disponible y los clientes actuales.
+        """
+        self.nombre = nombre
+        self.menu_productos = []
+        self.clientes_registrados = []
+
+    def agregar_al_menu(self, producto):
+        """Agrega un nuevo producto al catálogo del menú."""
+        self.menu_productos.append(producto)
+
+    def registrar_cliente(self, cliente):
+        """Registra un nuevo cliente en el sistema del restaurante."""
+        self.clientes_registrados.append(cliente)
+
+    def mostrar_menu(self):
+        """Muestra en consola de forma organizada los productos del menú."""
+        print(f"\n--- MENÚ DE {self.nombre.upper()} ---")
+        for prod in self.menu_productos:
+            print(f" * {prod}")
+        print("-" * 30)
+
+    def mostrar_estado_mesas(self):
+        """Muestra un resumen en consola de los clientes y sus cuentas."""
+        print(f"\n--- ESTADO DE CLIENTES EN {self.nombre.upper()} ---")
+        for cli in self.clientes_registrados:
+            print(cli)
+            # Mostramos el desglose de lo que consumió y su cuenta total
+            for prod in cli.historial_consumo:
+                print(f"   - {prod.nombre}: ${prod.precio:.2f}")
+            print(f"   TOTAL CUENTA: ${cli.calcular_total_cuenta():.2f}\n")
+        print("-" * 30)
